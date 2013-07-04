@@ -1527,7 +1527,7 @@ a.glow {
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	top: 36px;
+	top: 0px;
 	overflow: hidden;
 	min-width: 960px;
 	background-color: #333;
