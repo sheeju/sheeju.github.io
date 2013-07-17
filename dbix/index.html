@@ -1,0 +1,420 @@
+<!doctype html>  
+<html lang=en>
+	<head>
+		<meta charset=utf-8>
+
+		<title>~ DBIx::Class :: Perl Mongers Bangalore..~</title>
+
+		<link rel=stylesheet href=css/reset.css>
+		<link rel=stylesheet href=css/main.css>
+
+	</head>
+
+	<body>
+
+		<div id=reveal>
+
+			<div class=slides>
+				<section>
+				<section>
+				<h2>DBIx::Class Walk through</h2>
+				<br/>+ In this presentation I will walk through DBIx::Class
+				<br/> which helps you get started 
+				<a href="#/0/2"><p id="triangle-down"></p></a>
+				</section>
+				
+				<section>
+				<br/><a href=http://github.com/sheeju>~ Sheeju Alex ~</a>
+				<p class="fragment">
+				<br/>Exceleron Inc
+				<br/>Lead Product Developer
+				<br/>sheeju@exceleron.com
+				</p>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h2>DBI Background</h2>
+				<p class="fragment">
+				<br/>+ Perl Database Interface Module
+				<br/>+ High level layer to interact with databases
+				<a href="#/0/2"><p id="triangle-down"></p></a>
+				</p>
+				</section>
+
+				<section>
+				<h2>DBI Background</h2>
+				<p class="fragment">
+				<br/>+ Awesome module which can connect to any database you ask
+				<br/>+ Uniform interface to handle different types of databases 
+				</p>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h2>DBIx::Class</h2>
+				<br/>+ Is an ORM (Object Relational Mapper) 
+				<br/>+ SQL => Object
+				<p class="fragment">
+				<br/>+ Database tables becomes Object 
+				<br/>+ Table data and relationships between tables become object methods 
+				<a href="#/0/2"><p id="triangle-down"></p></a>
+				</p>
+				</section>
+
+				<section>
+				<h2>DBIx::Class</h2>
+				</br>+ Examples?
+				<p class="fragment">
+				<br/>+ DBIx::Class or Rose::DB::Object (Perl) 
+				<br/>+ Hibernate (Java) 
+				<br/>+ Yii/Zend (PHP) 
+				</p>
+				</section>
+
+				<section>
+				<h2>DBIx::Class</h2>
+				</br>+ Founded by Matt S. Trout (mst) 
+				</br>+ Website: <a href="http://www.dbix-class.org/">http://www.dbix-class.org/</a> 
+				</section>
+
+				<section>
+				<h2>DBIx::Class</h2>
+				</br>+ Benefits?
+				<p class="fragment">
+				<br/>+ No more writing SQL 
+				<br/>+ Make your coding easier 
+				<br/>+ SQL statements are executed when it is needed (perfoma) 
+				</p>
+				</section>
+
+				</section>
+
+				<section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ User Role Mangement Example 
+				<br/><img src="dbix_example.png" height="350px"/>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ dbicdump
+				<pre><code data-trim contenteditable>
+dbicdump -o dump_directory=./lib DBIxTest::Schema dbi:Pg:dbname=dbix_test sheeju "{quote_char=>q{\"}, quote_field_names=>{0}, name_sep=>{.} }" 
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ make_schema_at using simple perl script 
+				<pre><code data-trim contenteditable>
+#!/usr/bin/env perl
+
+use FindBin;
+use Getopt::Std;
+use Data::Dumper;
+
+use lib "$FindBin::Bin/../lib";
+
+use DBIx::Class::Schema::Loader 'make_schema_at';
+
+our ($opt_F, $opt_d);
+getopts('Fd');
+
+make_schema_at('DBIxTest::Schema',
+           {
+               debug => !!($opt_d),
+               really_erase_my_files => !!($opt_F),
+               dump_directory=>"$FindBin::Bin/lib",
+               overwrite_modifications=>1,
+               preserve_case=>1,
+           },
+           ['dbi:Pg:dbname=dbix_test','sheeju','sheeju', {'quote_char' => '"', 'quote_field_names' => '0', 'name_sep' => '.' }],
+          );
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ DBIxTest/Schema.pm 
+				<pre><code data-trim contenteditable>
+use utf8;
+package DBIxTest::Schema;
+
+# Created by DBIx::Class::Schema::Loader
+# DO NOT MODIFY THE FIRST PART OF THIS FILE
+
+use strict;
+use warnings;
+
+use base 'DBIx::Class::Schema';
+
+__PACKAGE__->load_namespaces;
+1;
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ Result/User.pm (User Object or User Table) 
+				<pre style="font-size:10px"><code data-trim contenteditable height="400px">
+package DBIxTest::Schema::Result::User;
+use base 'DBIx::Class::Core';
+
+__PACKAGE__->table("User");
+
+__PACKAGE__->add_columns(
+  "Id",
+  {
+  accessor => "id", data_type => "integer", is_auto_increment => 1, is_nullable => 0,
+  sequence => "User_Id_seq",
+  },
+  "Name",
+  { accessor => "name", data_type => "varchar", is_nullable => 0, size => 255 },
+  "Email",
+  { accessor => "email", data_type => "varchar", is_nullable => 0, size => 255 },
+  "PasswordSalt",
+  { accessor => "password_salt", data_type => "bytea", is_nullable => 0 },
+  "PasswordHash",
+  { accessor => "password_hash", data_type => "bytea", is_nullable => 0 },
+  "Status",
+  { accessor => "status", data_type => "varchar", default_value => "Active", is_nullable => 0, size => 64 },
+);
+
+__PACKAGE__->set_primary_key("Id");
+
+__PACKAGE__->add_unique_constraint("User_Email_key", ["Email"]);
+
+__PACKAGE__->has_many(
+  "user_roles",
+  "DBIxTest::Schema::Result::UserRole",
+  { "foreign.UserId" => "self.Id" },
+);
+
+__PACKAGE__->many_to_many("roles", "user_roles", "role");
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ Result/Role.pm 
+				<pre><code data-trim contenteditable>
+package DBIxTest::Schema::Result::Role;
+
+use strict;
+use warnings;
+
+use base 'DBIx::Class::Core';
+
+__PACKAGE__->table("Role");
+
+__PACKAGE__->add_columns(
+  "Id",
+  {
+  accessor => "id", data_type => "integer", is_auto_increment => 1, is_nullable => 0,
+  sequence => "Role_Id_seq",
+  },
+  "Name",
+  { accessor => "name", data_type => "varchar", is_nullable => 0, size => 255 },
+);
+
+__PACKAGE__->set_primary_key("Id");
+
+__PACKAGE__->has_many(
+  "user_roles",
+  "DBIxTest::Schema::Result::UserRole",
+  { "foreign.RoleId" => "self.Id" },
+);
+
+__PACKAGE__->many_to_many("users", "user_roles", "user");
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
+				<br/>+ Result/UserRole.pm 
+				<pre><code data-trim contenteditable>
+package DBIxTest::Schema::Result::UserRole;
+
+use strict;
+use warnings;
+
+use base 'DBIx::Class::Core';
+
+__PACKAGE__->table("UserRole");
+
+__PACKAGE__->add_columns(
+  "UserId",
+  {
+    accessor       => "user_id", data_type      => "integer", is_foreign_key => 1, is_nullable    => 0,
+  },
+  "RoleId",
+  {
+    accessor       => "role_id", data_type      => "integer", is_foreign_key => 1, is_nullable    => 0,
+  },
+);
+
+__PACKAGE__->set_primary_key("UserId", "RoleId");
+
+__PACKAGE__->belongs_to(
+  "role",
+  "DBIxTest::Schema::Result::Role",
+  { Id => "RoleId" },
+);
+
+__PACKAGE__->belongs_to(
+  "user",
+  "DBIxTest::Schema::Result::User",
+  { Id => "UserId" },
+);
+				</code></pre>
+				</section>
+
+				</section>
+
+				<section>
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ Schema creations 
+				<pre><code data-trim contenteditable>
+use DBIxTest::Schema;
+
+my $schema = DBIxTest::Schema->connect( "DBI:Pg:dbname=dbix_test",
+    "sheeju", "sheeju", { RaiseError => 1, PrintError => 1, 'quote_char' => '"', 'quote_field_names' => '0', 'name_sep' => '.' } ) || die("cant connect");;
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ Read All records 
+				<pre><code data-trim contenteditable>
+my $all_users = $schema->resultset('User')->all;
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ Select/search query 
+				<pre><code data-trim contenteditable>
+$active_users = $schema->resultset('User')->search({"Status" => "Active"});
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ Insert/Create 
+				<pre><code data-trim contenteditable>
+my $user_01 = $schema->resultset('User')->create(
+    {   
+        Name => 'JohnSample',
+        Email => $time.'@sample.com',
+        PasswordSalt => 'sheeju',
+        PasswordHash => 'sheeju',
+        Status => 'Active',
+    }   
+);      
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ Update Record 
+				<pre><code data-trim contenteditable>
+$user_01->update({Email => 'sheeju'.$time.'@exceleron.com'});
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ Delete Record 
+				<pre><code data-trim contenteditable>
+$user_01->delete;
+
+my $user = $schema->resultset('User')->search( { Email => 'jeremy@purepwnage.com' } )->first;
+$user->delete if($user);
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<br/>+ JOIN query 
+				<pre><code data-trim contenteditable>
+$active_users = $schema->resultset('User')->search({"user_roles.RoleId" => 1}, {"join" => "user_roles"});
+$active_users->update({Status => 'InActive'});
+				</code></pre>
+				</section>
+
+
+
+				</section>
+
+
+				<section>
+				<h2>Thanks!</h2>
+				<blockquote>
+					Happy Coding :)
+				</blockquote>
+				<br/>Sheeju Alex
+				<br/><br/><p id="star-five" style="-webkit-transform:scale(0.7) rotate(35deg);-moz-transform:scale(0.7) rotate(35deg);"></p>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class=controls>
+			<a class=left href=#>&#x25C4;</a>
+			<a class=right href=#>&#x25BA;</a>
+			<a class=up href=#>&#x25B2;</a>
+			<a class=down href=#>&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class=progress><span></span></div>
+
+		</div>
+
+		<script src=js/reveal.js></script>
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: false,
+
+				// UI style
+				theme: query.theme || 'neon', // default/neon
+
+				// Transition style
+				transition: query.transition || 'concave', // default/cube/page/concave/linear(2d)
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
