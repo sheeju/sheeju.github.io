@@ -1,23 +1,46 @@
-<!doctype html>  
-<html lang=en>
+<!doctype html>
+<html lang="en">
+
 	<head>
-		<meta charset=utf-8>
+		<meta charset="utf-8">
 
-		<title>~ DBIx::Class :: Perl Mongers Bangalore..~</title>
+		<title>DBIx::Class</title>
 
-		<link rel=stylesheet href=css/reset.css>
-		<link rel=stylesheet href=css/main.css>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Sheeju Alex">
 
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
 	</head>
 
 	<body>
 
-		<div id=reveal>
+		<div class="reveal">
 
-			<div class=slides>
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
 				<section>
 				<section>
-				<h2>DBIx::Class Walk through</h2>
+				<h2>DBIx::Class</h2>
+				<br/> 
+				<h2>Walk through</h2>
 				<br/>+ In this presentation I will walk through DBIx::Class
 				<br/> which helps you get started 
 				<a href="#/0/2"><p id="triangle-down"></p></a>
@@ -25,11 +48,6 @@
 				
 				<section>
 				<br/><a href=http://github.com/sheeju>~ Sheeju Alex ~</a>
-				<p class="fragment">
-				<br/>Exceleron Inc
-				<br/>Lead Product Developer
-				<br/>sheeju@exceleron.com
-				</p>
 				</section>
 				</section>
 
@@ -86,6 +104,7 @@
 				<p class="fragment">
 				<br/>+ No more writing SQL 
 				<br/>+ Make your coding easier 
+				<br/>+ Cross DB: Majority of code should run on all databases 
 				<br/>+ SQL statements are executed when it is needed (perfoma) 
 				</p>
 				</section>
@@ -103,7 +122,7 @@
 				<section>
 				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
 				<br/>+ dbicdump
-				<pre><code data-trim contenteditable>
+				<pre><code data-trim>
 dbicdump -o dump_directory=./lib DBIxTest::Schema dbi:Pg:dbname=dbix_test sheeju "{quote_char=>q{\"}, quote_field_names=>{0}, name_sep=>{.} }" 
 				</code></pre>
 				</section>
@@ -278,7 +297,7 @@ __PACKAGE__->belongs_to(
 
 				<section>
 				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Schema</font></h2>
 				<br/>+ Schema creations 
 				<pre><code data-trim contenteditable>
 use DBIxTest::Schema;
@@ -289,47 +308,69 @@ my $schema = DBIxTest::Schema->connect( "DBI:Pg:dbname=dbix_test",
 				</section>
 
 				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
-				<br/>+ Read All records 
-				<pre><code data-trim contenteditable>
-my $all_users = $schema->resultset('User')->all;
-				</code></pre>
-				</section>
-
-				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
-				<br/>+ Select/search query 
-				<pre><code data-trim contenteditable>
-$active_users = $schema->resultset('User')->search({"Status" => "Active"});
-				</code></pre>
-				</section>
-
-				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
-				<br/>+ Insert/Create 
-				<pre><code data-trim contenteditable>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CRUD</font></h2>
+				<br/>+ C: Create 
+				<div class="fragment">
+				<br/>+ Create/Insert Record 
+				<pre><code data-trim>
 my $user_01 = $schema->resultset('User')->create(
     {   
         Name => 'JohnSample',
-        Email => $time.'@sample.com',
+        Email => 'john@sample.com',
         PasswordSalt => 'sheeju',
         PasswordHash => 'sheeju',
         Status => 'Active',
     }   
-);      
+);
 				</code></pre>
+				</div>
 				</section>
 
 				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
-				<br/>+ Update Record 
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CRUD</font></h2>
+				<br/>+ R: Read 
+				<div class="fragment">
+				<br/>+ Read All records 
 				<pre><code data-trim contenteditable>
-$user_01->update({Email => 'sheeju'.$time.'@exceleron.com'});
+my $all_users = $schema->resultset('User')->all;
 				</code></pre>
+				</div>
+				<div class="fragment">
+				<br/>+ Select/search query 
+				<pre><code data-trim contenteditable>
+$active_users = $schema->resultset('User')->search({"Status" => "Active"});
+				</code></pre>
+				</div>
+				<div class="fragment">
+				<br/>+ JOIN and Search query 
+				<pre><code data-trim contenteditable>
+$active_users = $schema->resultset('User')->search({"user_roles.RoleId" => 1}, {"join" => "user_roles"});
+				</code></pre>
+				</div>
 				</section>
 
 				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CRUD</font></h2>
+				<br/>+ U: Update
+				<div class="fragment">
+				<br/>+ Update User Email
+				<pre><code data-trim contenteditable>
+$user_01->update({Email => 'sheeju@exceleron.com'});
+				</code></pre>
+				</div>
+				<div class="fragment">
+				<br/>+ Update with Join 
+				<pre><code data-trim contenteditable>
+$active_users = $schema->resultset('User')->search({"user_roles.RoleId" => 1}, {"join" => "user_roles"});
+$active_users->update({Status => 'InActive'});
+				</code></pre>
+				</div>
+				</section>
+
+				<section>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CRUD</font></h2>
+				<br/>+ D: Delete
+				<div class="fragment">
 				<br/>+ Delete Record 
 				<pre><code data-trim contenteditable>
 $user_01->delete;
@@ -337,17 +378,27 @@ $user_01->delete;
 my $user = $schema->resultset('User')->search( { Email => 'jeremy@purepwnage.com' } )->first;
 $user->delete if($user);
 				</code></pre>
+				</div>
 				</section>
 
 				<section>
-				<h2>DBIx Example: <font size="5" style="vertical-align: middle">CURD</font></h2>
-				<br/>+ JOIN query 
-				<pre><code data-trim contenteditable>
-$active_users = $schema->resultset('User')->search({"user_roles.RoleId" => 1}, {"join" => "user_roles"});
-$active_users->update({Status => 'InActive'});
-				</code></pre>
+				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Methods you like</font></h2>
+				<div class="fragment">
+				<br/>+ find_or_create 
+				<br/>+ update_or_create 
+				<br/>+ $schema->deploy 
+				</div>
 				</section>
 
+				<section>
+				<h2>Result vs Resultset</h2>
+				<div class="fragment">
+					<br/>+ Result = Row 
+					<br/>+ ResultSet = Query Plan ($user->active) 
+				</div>
+				</section>
+
+				</section>
 
 
 				</section>
@@ -359,58 +410,44 @@ $active_users->update({Status => 'InActive'});
 					Happy Coding :)
 				</blockquote>
 				<br/>Sheeju Alex
+				<p class="fragment">
+				<br/>Exceleron Inc
+				<br/>Lead Product Developer
+				<br/>sheeju@exceleron.com
+				</p>
 				<br/><br/><p id="star-five" style="-webkit-transform:scale(0.7) rotate(35deg);-moz-transform:scale(0.7) rotate(35deg);"></p>
 				</section>
+
 			</div>
-
-			<!-- The navigational controls UI -->
-			<aside class=controls>
-			<a class=left href=#>&#x25C4;</a>
-			<a class=right href=#>&#x25BA;</a>
-			<a class=up href=#>&#x25B2;</a>
-			<a class=down href=#>&#x25BC;</a>
-			</aside>
-
-			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
-			<div class=progress><span></span></div>
 
 		</div>
 
-		<script src=js/reveal.js></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
 		<script>
-			// Parse the query string into a key/value object
-			var query = {};
-			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
-				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
-			} );
 
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				// Display controls in the bottom right corner
 				controls: true,
-
-				// Display a presentation progress bar
 				progress: true,
-
-				// If true; each slide will be pushed to the browser history
 				history: true,
+				center: true,
 
-				// Flags if mouse wheel navigation should be enabled
-				mouseWheel: true,
-
-				// Apply a 3D roll to links on hover
-				rollingLinks: false,
-
-				// UI style
-				theme: query.theme || 'neon', // default/neon
-
-				// Transition style
-				transition: query.transition || 'concave', // default/cube/page/concave/linear(2d)
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
