@@ -30,6 +30,11 @@
 		<![endif]-->
 	</head>
 
+	<style>
+		.reveal pre {
+			width: 120%;
+		}
+	</style>
 	<body>
 
 		<div class="reveal">
@@ -123,7 +128,9 @@
 				<h2>DBIx Example: <font size="5" style="vertical-align: middle">Generate Schema</font></h2>
 				<br/>+ dbicdump
 				<pre><code data-trim>
-dbicdump -o dump_directory=./lib DBIxTest::Schema dbi:Pg:dbname=dbix_test sheeju "{quote_char=>q{\"}, quote_field_names=>{0}, name_sep=>{.} }" 
+dbicdump -o dump_directory=./lib DBIxTest::Schema 
+dbi:Pg:dbname=dbix_test sheeju 
+"{quote_char=>q{\"}, quote_field_names=>{0}, name_sep=>{.} }" 
 				</code></pre>
 				</section>
 
@@ -152,7 +159,9 @@ make_schema_at('DBIxTest::Schema',
                overwrite_modifications=>1,
                preserve_case=>1,
            },
-           ['dbi:Pg:dbname=dbix_test','sheeju','sheeju', {'quote_char' => '"', 'quote_field_names' => '0', 'name_sep' => '.' }],
+		   ['dbi:Pg:dbname=dbix_test','sheeju','sheeju', 
+				{'quote_char' => '"', 'quote_field_names' => '0', 'name_sep' => '.' }
+			],
           );
 				</code></pre>
 				</section>
@@ -269,11 +278,11 @@ __PACKAGE__->table("UserRole");
 __PACKAGE__->add_columns(
   "UserId",
   {
-    accessor       => "user_id", data_type      => "integer", is_foreign_key => 1, is_nullable    => 0,
+    accessor => "user_id", data_type => "integer", is_foreign_key => 1, is_nullable    => 0,
   },
   "RoleId",
   {
-    accessor       => "role_id", data_type      => "integer", is_foreign_key => 1, is_nullable    => 0,
+    accessor => "role_id", data_type => "integer", is_foreign_key => 1, is_nullable    => 0,
   },
 );
 
@@ -344,7 +353,9 @@ $active_users = $schema->resultset('User')->search({"Status" => "Active"});
 				<div class="fragment">
 				<br/>+ JOIN and Search query 
 				<pre><code data-trim contenteditable>
-$active_users = $schema->resultset('User')->search({"user_roles.RoleId" => 1}, {"join" => "user_roles"});
+$active_users = $schema->resultset('User')->search(
+					{"user_roles.RoleId" => 1}, 
+					{"join" => "user_roles"});
 				</code></pre>
 				</div>
 				</section>
@@ -361,7 +372,9 @@ $user_01->update({Email => 'sheeju@exceleron.com'});
 				<div class="fragment">
 				<br/>+ Update with Join 
 				<pre><code data-trim contenteditable>
-$active_users = $schema->resultset('User')->search({"user_roles.RoleId" => 1}, {"join" => "user_roles"});
+$active_users = $schema->resultset('User')->search(
+					{"user_roles.RoleId" => 1}, 
+					{"join" => "user_roles"});
 $active_users->update({Status => 'InActive'});
 				</code></pre>
 				</div>
@@ -375,7 +388,9 @@ $active_users->update({Status => 'InActive'});
 				<pre><code data-trim contenteditable>
 $user_01->delete;
 
-my $user = $schema->resultset('User')->search( { Email => 'jeremy@purepwnage.com' } )->first;
+my $user = $schema->resultset('User')->search( 
+				{ Email => 'jeremy@purepwnage.com' } 
+			)->first;
 $user->delete if($user);
 				</code></pre>
 				</div>
