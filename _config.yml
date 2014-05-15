@@ -1,0 +1,15 @@
+name: "sheeju"
+description: "Fluid, responsive blog theme for Jekyll"
+
+author: "Sheeju Alex"
+
+url: "http://sheeju.github.io"
+baseurl: ""
+
+markdown: rdiscount
+permalink: :year/:month/:title.html
+pygments: true
+
+# Google Analytics
+ga_domain: sheeju.github.io
+ga_tracking_id: UA-47727049-1
