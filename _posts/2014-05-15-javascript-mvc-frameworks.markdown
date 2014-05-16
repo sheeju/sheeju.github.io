@@ -10,25 +10,13 @@ Now a days there are many Javascript MVC frameworks in development and productio
 
 Here is good link which compares different in production MVC frameworks.
 
-http://codebrief.com/2012/01/the-top-10-javascript-mvc-frameworks-reviewed/
+<a href="http://codebrief.com/2012/01/the-top-10-javascript-mvc-frameworks-reviewed/">http://codebrief.com/2012/01/the-top-10-javascript-mvc-frameworks-reviewed/</a>
 
 I got impressed by EmberJS because of its Rich templating system with composed views and UI bindings, I also noticed that many AngularJS and Backbone developers moving to EmberJS. 
 
-# Ember Advantages 
-
-* Handlebars as its templating system
-* It should be clear where code belongs and where to find It
-* Change in one area of your app should not affect other areas.
-* Well Organised
-* Eliminages Boilerplate
-* Loosely Coupled
-
 # Clear Delineation of Responsibilities
 
-		Model	Model	Model	Model
-Router	Controller		Controller
-		View			views
-		Template		Template
+<img src="{{ site.baseurl }}/assets/img/ember-structure.png">
 
 * Templates define the HTML to render
 * Models encapsulates the data and logic of your problem
@@ -55,3 +43,5 @@ PostRoute will load the Post model into the PostController and render the "post"
 CommentsRoute will render the "comments" template with the CommentsController into the main outlet of the "post" template
 
 > More Info visit this presentation - https://speakerdeck.com/lukemelia/ember-dot-js-the-architecture-advantage
+
+<script async class="speakerdeck-embed" data-id="82621660cf300130128222a1415176d2" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
