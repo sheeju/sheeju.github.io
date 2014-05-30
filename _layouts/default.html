@@ -12,7 +12,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700|Lora:400,700,400italic" rel="stylesheet" type="text/css">
       <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/main.css" />
-      <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/syntax.css" />
+      <!--<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/syntax.css" />-->
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/prism/themes/prism.css" data-noprefix />
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/prism/themes/prism-okaidia.css" data-noprefix />
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/prism/prism-show-language.css" data-noprefix />
       <link href="atom.xml" type="application/atom+xml" rel="alternate" title="Site ATOM Feed">
   </head>
 
@@ -27,13 +30,21 @@
       </div>
       <div id="bio">
           <h1>Hi, I'm {{ site.author }}.</h1>
-		  <p>I'm a developer, living in Bangalore, India and this is my personal development blog. I share my development stuff on <a href="">Github</a>, before this I used to share my technical and crazy stuff on <a href="http://sheejualex.blogspot.com">Sheeju Alex, Blog Spot</a>. Shoot me an <a href="mailto:">email</a> if you'd like to be in touch.</p>
+		      <p>I'm a developer, living in Bangalore, India and this is my personal development blog. I plan to share my technical stuff here, long back but not so long back I used to share my technical and crazy stuff on <a href="http://sheejualex.blogspot.com">Sheeju Alex, Blog Spot</a>. </p>
+
+          <p>Shoot me an <a href="mailto:sheejuec7@gmail.com">email</a> if you'd like to be in touch.</p>
       </div>
     </div>
 
     <header>
       <div class="h-wrap">
         <h1 class="title"><a href="{{ site.baseurl }}" title="Back to Homepage">{{ site.name }}</a></h1>
+        ::
+        <a href="https://github.com/sheeju/" title="Github">Github</a>
+        ::
+        <a href="https://www.linkedin.com/in/sheejualex" title="LinkedIn">LinkedIn</a>
+        ::
+        <a href="https://twitter.com/sheeju7" title="Twitter">Twitter</a>
         <a class="menu-icon" title="Open Bio"><span class="lines"></span></a>
       </div>
     </header>
@@ -47,6 +58,9 @@
     </footer>
 
     <script src="{{ site.baseurl }}/js/main.js"></script>
+    <script src="{{ site.baseurl }}/js/prism/prism.js"></script>
+    <!--<script src="{{ site.baseurl }}/js/prism/prism-show-language.js"></script>-->
+
     {% comment %} Google Analytics {% endcomment %}
     {% if site.ga_tracking_id and site.ga_domain %}
       <script>
