@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="favicon.png" />
+<title>Test drive ▲ Prism</title>
+<link rel="stylesheet" href="css/prism/themes/prism.css" data-noprefix />
+<link rel="stylesheet" href="css/prism/themes/prism-okaidia.css" data-noprefix />
+<link rel="stylesheet" href="css/prism/prism-show-language.css" data-noprefix />
+
+<style>
+#theme {
+	margin-right: -9em;
+}
+
+textarea {
+	width: 100%;
+	height: 10em;
+	padding: 1em;
+	box-sizing: border-box;
+	margin: .5em 0;
+	background: #f5f2f0;
+	color: black;
+	text-shadow: 0 1px white;
+	tab-size: 4;
+	font: 100% Consolas, Monaco, monospace;
+	white-space: pre;
+	word-wrap: normal;
+}
+
+#language {
+	column-count: 4;
+}
+
+	#language label {
+		display: block;
+		padding: .2em;
+	}
+
+	#language input {
+		margin-right: 1em;
+	}
+	
+	#language strong {
+		display: block;
+		column-span: all;
+	}
+
+</style>
+
+</head>
+<body>
+
+<header>
+	<h2>Test drive</h2>
+	<p>Take Prism for a spin!</p>
+</header>
+
+<section>
+	<form>
+		
+		<p id="language">
+			<strong>Language:</strong>
+		</p>
+		
+		<p>Result:</p>
+		<pre data-start="1" class="line-numbers"><code class="language-javascript">
+// ember/tests/integration/landing-page-test.js
+test('Should allow navigating back to root from another page', function() {
+  visit('/about').then(function() {
+    click('a:contains("Home")').then(function() {
+      notEqual(find('h3').text(), 'About');
+    });
+  });
+});
+		</code></pre>
+
+
+<pre data-start="1" class="line-numbers"><code class="language-markup">
+<h3>About</h3>
+
+<p>Boston Ember is the monthly meetup where awesome people get together
+to do awesome Ember related things!</p>
+
+</code></pre>
+
+Your test should now be green. If you navigate to the root path in your browser you should be able to click through the app. What about getting back to root? We can add a test to for this navigation as well.
+
+<pre data-start="1" class="line-numbers"><code class="language-javascript" data-language="javascript">
+// ember/tests/integration/landing-page-test.js
+test('Should allow navigating back to root from another page', function() {
+  visit('/about').then(function() {
+    click('a:contains("Home")').then(function() {
+      notEqual(find('h3').text(), 'About');
+    });
+  });
+});
+</code></pre>
+
+<pre data-start="1" class="line-numbers"><code class="language-markup">
+// ember/templates/application.hbs
+{{link-to 'Home' 'application'}}
+{{link-to 'About' 'about'}}
+</code></pre>
+
+<pre><code class="language-css">p { color: red }</code></pre>
+
+
+	</form>
+</section>
+
+<footer data-src="templates/footer.html" data-type="text/html"></footer>
+<script src="js/prism/prism.js"></script>
+<script src="js/prism/prism-show-language.js"></script>
+
+</body>
+</html>
