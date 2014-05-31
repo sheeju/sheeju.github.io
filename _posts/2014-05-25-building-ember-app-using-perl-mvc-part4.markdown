@@ -149,13 +149,15 @@ Router.map(function() {
 {% endraw %}
 ```
 
-```language-javascript
+<pre class=" language-markup">
+<code class=" language-markup">
 // ember/app/templates/speakers.hbs
-<h3>Speakers</h3>
+&lt;h3>Speakers&lt;/h3>
 {% raw %}
 {{outlet}}
 {% endraw %}
-```
+</code>
+</pre>
 
 The first test should now be passing.
 
