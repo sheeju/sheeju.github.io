@@ -1,0 +1,28 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Code / Design: Francisco J. Santana Jorge
+    Site: https://github.com/santana-jorge/my-simple-resume
+    Twitter: @_FJSJ_
+    Location: Gran Canaria, Canary Island, Spain
+
+# SITE
+
+    Standards: HTML5, CSS3   
+    Components: Initializr (http://www.initializr.com/)
+    Software: Sublime, Google Chrome Extensions (WhatFont, Resize window and ColorZilla)
+    os: GNU/Linux Mint
+
+# THANKS
+
+    Bootstrap (http://getbootstrap.com)
+    Font Awesome (http://fortawesome.github.io/Font-Awesome)
+    HTML 5 Boilerplate (http://html5boilerplate.com)
+    Initializr (http://www.initializr.com/)
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, Boostrap, Font Awesome, jQuery, Modernizr,
+    Boilerplate, Initializr

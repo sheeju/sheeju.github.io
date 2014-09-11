@@ -147,6 +147,15 @@ header .h-wrap .menu-icon.hover .lines:after {
   top: 0.0219rem;
 }
 
+.menu-resume {
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	margin-right: 10px;
+	text-align: center;
+	float: right;
+}
+
 header .h-wrap .close .lines {
   -webkit-transition: background .3s 0s ease;
   transition:         background .3s 0s ease;
@@ -550,36 +559,56 @@ section#single-wrap img {
 
 @media only screen and (max-width : 479px) {
 
-  body { font-size: 15px; }
-  header .h-wrap { padding: 30px 20px; }
-  ul.posts li .p-wrap { padding: 20px; }
-  ul.posts li .p-wrap:hover { background: #67AAF7; padding-left: 20px; }
-  #off-canvas { padding: 0 20px; }
-  #off-canvas.toggled { padding: 20px; }
-  #off-canvas #bio { width: 100%; }
-  #off-canvas #avatar img { width: 120px; }
-  section#single-wrap { margin: 0 auto; }
-  section#single-wrap .single-content { padding: 0 20px; }
-  section#single-wrap h1.page-title { padding: 0 20px; margin: 0 0 30px; }
-  section#single-wrap p { padding: 0 20px; }
+	body { font-size: 15px; }
+	header .h-wrap { padding: 30px 20px; }
+	ul.posts li .p-wrap { padding: 20px; }
+	ul.posts li .p-wrap:hover { background: #67AAF7; padding-left: 20px; }
+	#off-canvas { padding: 0 20px; }
+	#off-canvas.toggled { padding: 20px; }
+	#off-canvas #bio { width: 100%; }
+	#off-canvas #avatar img { width: 120px; }
+	section#single-wrap { margin: 0 auto; }
+	section#single-wrap .single-content { padding: 0 20px; }
+	section#single-wrap h1.page-title { padding: 0 20px; margin: 0 0 30px; }
+	section#single-wrap p { padding: 0 20px; }
 
-  section#single-wrap ul,
-  section#single-wrap ol {
-    padding: 10px 0 10px 35px;
-  }
+	section#single-wrap ul,
+	section#single-wrap ol {
+		padding: 10px 0 10px 35px;
+	}
 
-  section#single-wrap h1,
-  section#single-wrap h2,
-  section#single-wrap h3,
-  section#single-wrap h4,
-  section#single-wrap h5,
-  section#single-wrap h6 { 
-    padding: 0 20px; 
-    margin-top: 30px;
-  }
+	section#single-wrap h1,
+	section#single-wrap h2,
+	section#single-wrap h3,
+	section#single-wrap h4,
+	section#single-wrap h5,
+	section#single-wrap h6 { 
+		padding: 0 20px; 
+		margin-top: 30px;
+	}
 
-  section#single-wrap blockquote { padding: 0 20px; border-left: 4px solid #39f; }
+	section#single-wrap blockquote { padding: 0 20px; border-left: 4px solid #39f; }
 
-  .highlight { padding: 10px 5px; margin: 30px 20px 40px; }
+	.highlight { padding: 10px 5px; margin: 30px 20px 40px; }
+
+	.social-btn {
+		display: table;
+		margin: 0 auto;
+		padding-top: 1em;
+		text-align: center;
+	}
+
+	.social-btn a {
+		color: #000;
+		padding-right: 1.4em;
+	}
+
+	.social-btn a:last-of-type {
+		padding-right: 0;
+	}
+
+	.social-btn .fa {
+		font-size: 1.6em;
+	}
 
 }

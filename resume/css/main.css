@@ -1,0 +1,408 @@
+
+
+/* ==========================================================================
+	Copyright (c) - All rights reserved.
+	Distributed under the GNU General Public Licence, Version 3.
+	(See accompanying file COPYING or copy at http://www.gnu.org/licenses/gpl-3.0.txt)
+
+ 	by santana-jorge
+   ========================================================================== */
+
+/* ==========================================================================
+   Reset.	
+   ========================================================================== */
+
+html, body {
+	max-width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* ==========================================================================
+   Typography.	
+   ========================================================================== */
+
+body {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.main-heading {
+	font-size: 1.8em;
+	font-weight: 800;
+}
+
+.second-heading {
+	font-size: 1.4em;
+	font-weight: 400;
+}
+
+.third-heading {
+	font-size: 0.7em;
+	font-weight: 200;
+}
+
+/* ==========================================================================
+   Main section.	
+   ========================================================================== */
+
+body {
+	background-color: #4c5f70;
+}
+
+#main-container {
+	background-color: #FFFFFF;
+	margin: 1.0714em;
+}
+
+.content-section {
+	padding-right: 0.1em;
+}
+
+/* ==========================================================================
+   Header section.	
+   ========================================================================== */
+
+#main-header {
+	background-color: #EEEEEE;
+	text-align: center;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+}
+	#main-header > div {
+		padding: 1.0714em;
+	}
+
+	#main-header .personal-photo {
+		padding-top: 1.5em;
+	}
+
+	#main-header .personal-photo,
+	#main-header .name-and-title {
+		padding-bottom: 1em;
+	}
+
+	#main-header .address-and-social {
+		padding-right: 2em;
+		padding-left: 2em;
+		padding-bottom: 0.63em;
+		text-align: left;
+	}
+
+		#main-header .address-and-social .address-info {
+			display: table;
+			margin: 0 auto;
+		}
+
+		#main-header .address-and-social .address-info address {
+			margin-bottom: 0.5em;
+		}
+
+		#main-header .address-and-social .social-btn {
+			display: table;
+			margin: 0 auto;	
+			padding-top: 1em;
+			text-align: center;
+		}
+
+			#main-header .address-and-social .social-btn a {
+				color: #000;
+				padding-right: 1.4em;
+			}
+
+			#main-header .address-and-social .social-btn a:last-of-type {
+				padding-right: 0;
+			}
+
+
+			#main-header .address-and-social .social-btn .fa {				
+				font-size: 1.6em;
+			}
+
+
+/* ==========================================================================
+   Main content section.	
+   ========================================================================== */
+
+#main-content {
+	padding: 1.0714em;
+}
+
+	#main-content section {
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+
+	#main-content .main-heading {
+		padding-bottom: 0.3em;
+		margin-bottom: 0.5em;
+		border-bottom: 2px solid #DDD;
+	}
+
+
+/* ==========================================================================
+   Technical Skills section.	
+   ========================================================================== */
+
+#technical-skills .skills {
+	padding-top: 0.5em;
+}
+
+	#technical-skills .progress {
+		border-radius: 0px;
+	}
+
+	#technical-skills .skills .progress-bar {
+		text-align: left;
+		padding-left: 1em;
+	}
+
+/* ==========================================================================
+   Languages section.	
+   ========================================================================== */
+
+#languages .language {
+	width: 100%;
+}
+
+	#languages .language .second-heading {
+		width: 35%;
+		font-size: 1.2em;
+		display: inline-block;
+	}
+
+	#languages .language .star-rating {
+		width: 60%;
+		display: inline-block;
+	}
+
+	#languages .language .fa {
+		font-size: 1.2em;
+	}
+
+	#languages .language .fa.fa-star-o {
+		color: #999999;
+	}
+
+	#languages .language .fa.fa-star {
+		color: #e3cf7a;
+	}
+
+
+/* ==========================================================================
+   Interests section.	
+   ========================================================================== */
+
+#interests .hobbies {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+	#interests .hobbies .btn {
+		border-radius: 0px;
+		margin-top: 0.3em;
+	}
+
+/* ==========================================================================
+   List with tabulated information (Education & Experience section).	
+   ========================================================================== */
+
+ul.info-list {
+	list-style: none;
+	padding: 1em 0;
+	margin-bottom: 0px;
+}
+
+	ul.info-list li{
+	  width: 100%;
+	  margin-bottom: 0.5em;
+	}
+
+	ul.info-list li .begin-end {
+		width: 28%;
+		display: inline-block;
+	}
+
+	ul.info-list li .titulation {
+		width: 69%;
+		float: right !important;
+		display: inline-block;
+	}
+
+	ul.info-list li .titulation .second-heading {
+		font-size: 1.2em;
+	}
+
+	ul.info-list li .titulation small {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+
+/* ==========================================================================
+   Item's List (Awards & Certificates section).	
+   ========================================================================== */
+
+ul.item-list {
+	list-style: none;
+	padding: 1em 0;
+}
+
+	ul.item-list li{
+	  width: 100%;
+	  margin-bottom: 0.5em;
+	}
+
+	ul.item-list li:last-of-type {
+		margin-bottom: 0;
+	}
+	
+	ul.item-list li .item-check {
+		width: 12%;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	ul.item-list li .item-check i {		
+		font-size: 1.6em;
+	}
+
+	ul.item-list li .item-text {
+		width: 86%;
+		display: inline-block;
+	}
+
+
+/* ==========================================================================
+   Footer section.	
+   ========================================================================== */
+
+#main-footer {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	text-align: center;
+}
+
+	#main-footer small {
+		font-size: 70%;
+	}
+
+
+/* ==========================================================================
+   Media Queries section.	
+   ========================================================================== */
+
+@media (min-width: 768px) {
+	/* Small devices Tablets */
+
+	#main-header .name-and-title .main-heading {
+		padding-top: 2.3em;
+		padding-bottom: 0m;
+	}
+
+	#main-header .address-and-social .address-info {
+		padding-top: 1.5em;
+	}
+
+	ul.info-list li .begin-end {
+		width: 15%;
+	}
+
+	ul.info-list li .titulation {
+		width: 83%;
+	}
+
+	ul.item-list li .item-check {
+		width: 5%;
+	}
+
+	ul.item-list li .item-text {
+		width: 90%;
+	}
+
+	#main-footer small {
+		font-size: 85%;
+	}
+
+}
+
+
+@media (min-width: 992px) {
+	/* Medium devices Desktops */
+
+	#main-header {
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+
+		#main-header .name-and-title .main-heading {
+			font-size: 2.2em;
+			padding-top: 1.8em;
+		}
+
+		#main-header .name-and-title .second-heading {
+			font-size: 1.8em;
+		}
+
+	#main-content {
+		padding: 1.5em;
+	}
+
+	ul.info-list li .begin-end {
+		width: 15%;
+	}
+
+	ul.info-list li .titulation {
+		width: 80%;
+	}
+
+	ul.item-list li .item-check {
+		width: 12%;
+	}
+
+	ul.item-list li .item-text {
+		width: 80%;
+	}
+
+}
+
+
+@media (min-width: 1200px) {
+	/* Large devices */
+
+	#main-header {
+		padding-left: 4em;
+		padding-right: 4em;
+	}
+
+		#main-header .name-and-title .main-heading {
+			padding-top: 0.6em;
+			font-size: 3.6em;
+		}
+
+		#main-header .name-and-title .second-heading {
+			font-size: 2.8em;
+		}
+
+		#main-header .personal-photo {
+			text-align: left;
+		}
+
+	#main-content {
+		padding: 2em;
+	}
+
+	ul.info-list li .begin-end {
+		width: 13%;
+	}
+
+	ul.info-list li .titulation {
+		width: 86%;
+	}
+
+	#main-footer small {
+		font-size: 95%;
+	}
+
+}
