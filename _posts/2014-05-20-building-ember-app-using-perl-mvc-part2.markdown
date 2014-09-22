@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Building am Ember App with PERL MVC framework - Part 2"
+title:  "Building an Ember App with PERL MVC framework - Part 2"
 date:   2014-05-20 16:57:51
 ---
 

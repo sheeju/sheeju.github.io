@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Building am Ember App with PERL MVC framework - Part 4"
+title:  "Building an Ember App with PERL MVC framework - Part 4"
 date:   2014-05-25 16:57:51
 ---
 
@@ -368,3 +368,6 @@ ember server --proxy http://localhost:3000
 Now you can visit `http://localhost:4200` to see Speakers list
 
 <img src="{{ site.baseurl }}/assets/img/ember-speakers.png">
+
+** Related Posts
+
