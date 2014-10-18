@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "Role-Based Access Control"
+date:   2014-10-14 16:57:51
+---
+
+Role based access control (RBAC) is an approch of restricting access to autorised users. The main advantage of this approach is to make adding or changing permission without going through all the users instead mapping permission to role level.
+
+The very large majority of software applications today use Implicit access control.  I posit that Explicit Access Control is much better for securing today’s software applications.
+
+## RBAC: Implicit Access Control
+
+Roles represent behavior or responsibility. But how do we know exactly what behavior or responsibility is associated with role? Most of the application don't know exactly what that role represents.
+
+Lets take an example the role "project_manager" is allowed to view project reports. Here is the relevant code
+
+```language-perl
+if($c->check_any_user_role(qw/project_manager/) {
+    #show the project report button
+} else {
+    #don't show the button
+}
+```
+
+This is just a string check and there is nothing else software can do to extend this permission check since it is hard coded. Also lets say that we decide to show project report button to "department_manager". Then we will have to change the code to reflect as shown below
+
+```language-perl
+if($c->check_any_user_role(qw/project_manager department_manager/) {
+    #show the project report button
+} else {
+    #don't show the button
+}
+```
+
+But what is product manager decides to make the role based permission dynamically because customer wants to be able to configure the roles themselves? In this case the Implicit Access Control fails.
+
+## RBAC: Explicit Access Control (Suggested Way)
+
+As we see above, the implicit access control approach can create havoc on software development. It would be really nice if roles level access control doesn't enforce code refactoring. Ideally it would be really nice by just assigning roles to user should have permission to requested resources (URL/Method)
+
+So how do we enable these benefits? We can by just following RBAC with proper schema which takes care of permission to required Resources 
+
+Here is the Entity-Relationship Diagram (ERD) for a possible database implementation of RBAC based system.
+
+<img src="{{ site.baseurl }}/assets/img/rbac-erd.png">
+
+So we will need to come up with better permission model which takes the permission URL/Method as input and check against the user to return true/false.
+Here is the example code.
+
+```language-perl
+if($c->user->permission('project_report') {
+    #show the project report button                                                              
+} else {                                                                                          
+    #don't show the button                                                                       
+}
+```
