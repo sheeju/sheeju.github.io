@@ -30,13 +30,13 @@ I got impressed by EmberJS because of its Rich templating system with composed v
 
 The Router DSL is a map of your app
 
-{% highlight js %}
+```language-javascript
 App.Router.map(function() {
 	this.resource('post', path: {'posts/:post_id'}, function () {
 		this.route('comments');
 	});	
 });
-{% endhighlight %}
+```
 
 PostRoute will load the Post model into the PostController and render the "post" template into the main outlet.
 
