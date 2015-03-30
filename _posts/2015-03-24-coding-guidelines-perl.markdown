@@ -6,7 +6,9 @@ date:   2015-03-24 10:57:51
 
 Coding guidelines is very important in all projects and especially when you have good amount of developers contributing to the project it becomes more important to follow common code styles so that the code is easy to understand and ship with consistent codebase.
 
-This blog outlines coding guidelines we follow @ Exceleron Software and this coding standard is loosely based on Perl Tidy and JS Beautify. This would be helpfull for Perl Development or Perl Web Development.
+This blog outlines coding guidelines we follow @ Exceleron Software and this coding standard is loosely based on Perl Tidy and JS Beautify. 
+
+**This would be helpfull for Perl Development or Perl Web Development.**
 
 # ViMconfig
 
