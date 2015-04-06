@@ -11,5 +11,5 @@ permalink: :year/:month/:title.html
 pygments: true
 
 # Google Analytics
-ga_domain: sheeju.github.io
+ga_domain: auto
 ga_tracking_id: UA-61593707-1
