@@ -41,7 +41,7 @@ foreach my $banana (@bunch) {
 }
 ```
 
-* Comments are not source contorl
+* Comments are not source control 
 
 ```language-perl
 #
