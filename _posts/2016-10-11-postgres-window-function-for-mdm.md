@@ -15,7 +15,7 @@ Register table stores reading of each day as received from AMI server, this is n
 
 Consumption calculation is done by using register reading for current day with previous day and calculate the difference in reading to get the usage consumption. So here is the WINDOW function using lead and row_number for getting leading register and row_number is used to filter out the duplicates. 
 
-```language-sql
+```sql
 
 WITH regs AS (
     SELECT * FROM "Register" 
@@ -50,7 +50,7 @@ WHERE row_number = 1
 
 ## Register Table
     
-```language-sql
+```sql
 
     DROP TABLE IF EXISTS "Register" CASCADE;
     CREATE TABLE "Register" (
@@ -81,7 +81,7 @@ WHERE row_number = 1
 
 ## Insert Test Data
 
-```language-sql
+```sql
 
 WITH series as (
 SELECT 
