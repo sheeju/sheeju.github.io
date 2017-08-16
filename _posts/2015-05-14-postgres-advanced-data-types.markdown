@@ -21,7 +21,7 @@ Here are the list of data Types
 
 Allows columns of the table to be defined as variable length multidimentional arrays. Arrays of any built-in tyoe or user defined type can be created.
 
-```language-sql
+```sql
 CREATE TABLE bookmarks (
    id	SERIAL,
    link VARCHAR(512),
@@ -31,14 +31,14 @@ CREATE TABLE bookmarks (
 
 Lets populate some data
 
-```language-sql
+```sql
 INSERT INTO bookmarks VALUES (1, 'http://perl.org', '{"Perl", "C"}');
 INSERT INTO bookmarks VALUES (1, 'http://php.net', '{"PHP", "C"}');
 INSERT INTO bookmarks VALUES (1, 'http://amazon.com', '{"PHP", "C", "Perl"}');
 ```
 
 
-```language-sql
+```sql
 SELECT * FROM bookmarks;
  id |       link        |     tags     
 ----+-------------------+--------------
@@ -54,7 +54,7 @@ Postgres have a bunch of [array functions](http://www.postgresql.org/docs/9.4/st
 
 **Bookmarks tagged with Perl**
 
-```language-sql
+```sql
 SELECT * FROM bookmarks WHERE ('Perl' = ANY(tags));
  id |       link        |     tags     
 ----+-------------------+--------------
@@ -72,7 +72,7 @@ SELECT * FROM bookmarks WHERE tags @> '{Perl}';
 
 **Bookmarks not tagged with Perl**
 
-```language-sql
+```sql
 SELECT * FROM bookmarks WHERE NOT ('Perl' = ANY(tags));
  id |      link      |  tags   
 ----+----------------+---------
@@ -88,7 +88,7 @@ SELECT * FROM bookmarks WHERE ('Perl' != ALL(tags));
 
 **Convert Array to String**
 
-```language-sql
+```sql
 SELECT array_to_string(ARRAY[1,2,NULL,4], ',', '*');
  array_to_string 
 -----------------
@@ -98,7 +98,7 @@ SELECT array_to_string(ARRAY[1,2,NULL,4], ',', '*');
 
 **Convert Array to Rows**
 
-```language-sql
+```sql
 SELECT unnest(ARRAY[1,2,3]);
  unnest 
 --------
@@ -110,7 +110,7 @@ SELECT unnest(ARRAY[1,2,3]);
 
 **Convert columnar value to Array value**
 
-```language-sql
+```sql
 SELECT array_agg(link) FROM bookmarks;
                      array_agg                      
 ----------------------------------------------------
@@ -121,13 +121,13 @@ SELECT array_agg(link) FROM bookmarks;
 
 You can index an array but you have to use the array operators and the GIN index type.
 
-```language-sql
+```sql
 CREATE INDEX idx_bookmarks on bookmarks USING GIN (tags);
 ```
 
 Below are the list of operators that can be used on indexed queries
 
-```language-sql
+```sql
 <@
 @>
 =
@@ -140,7 +140,7 @@ Posgtgres HSTORE is column type for storing key->value data (Schemaless data) so
 
 Here is SQL statements to create table with HSTORE datatype, populating data etc..
 
-```language-sql
+```sql
 ENABLE HSTORE Extension
 
 CREATE EXTENSION hstore;
@@ -152,7 +152,7 @@ CREATE TABLE book (
 );
 ```
 
-```language-sql
+```sql
 INSERT INTO book VALUES (1, 'First Book', 
 	'first_name => "Bob", 
 	last_name => "White", 
@@ -165,7 +165,7 @@ INSERT INTO book VALUES (1, 'Second Book',
 );
 ```
 
-```language-sql
+```sql
 SELECT * FROM book WHERE author->'last_name' = 'White';
 ```
 ## HSTORE functions
@@ -176,7 +176,7 @@ SELECT * FROM book WHERE author->'last_name' = 'White';
 
 Hstore has GiST and GIN index support for the @>, ?, ?& and ?| operators.
 
-```language-sql
+```sql
 CREATE INDEX authoridx ON book USING GIST (author);
 
 CREATE INDEX authoridx ON book USING GIN (author);
@@ -191,7 +191,7 @@ The JSON datatype is meant for storing JSON-structured data. It will validate th
 
 JSON can be used when you need to support nested objects but not just text or number when compared with HSTORE.
 
-```language-sql
+```sql
 CREATE TABLE events (
   name varchar(200),
   visitor_id varchar(200),
@@ -200,7 +200,7 @@ CREATE TABLE events (
 );
 ```
 
-```language-sql
+```sql
 INSERT INTO events VALUES (
   'pageview', '1',
   '{ "page": "/" }',
@@ -237,7 +237,7 @@ Some Example Queries
 
 **Browser Usage**
 
-```language-sql
+```sql
 SELECT browser->>'name' AS browser, count(browser)
 FROM events
 GROUP BY browser->>'name';
@@ -251,7 +251,7 @@ GROUP BY browser->>'name';
 
 **Total Revenue per visitor**
 
-```language-sql
+```sql
 SELECT visitor_id, SUM(CAST(properties->>'amount' AS integer)) AS total
 FROM events
 WHERE CAST(properties->>'amount' AS integer) > 0
@@ -267,7 +267,7 @@ GROUP BY visitor_id;
 
 **array_to_json**
 
-```language-sql
+```sql
 SELECT array_to_json(ARRAY[1,2,3]);
  array_to_json 
 ---------------
@@ -277,7 +277,7 @@ SELECT array_to_json(ARRAY[1,2,3]);
 
 **row_to_json**
 
-```language-sql
+```sql
 SELECT row_to_json(bookmarks) from bookmarks;
                           row_to_json                          
 ---------------------------------------------------------------
@@ -289,7 +289,7 @@ SELECT row_to_json(bookmarks) from bookmarks;
 
 **json_extract_path**
 
-```language-sql
+```sql
 SELECT json_extract_path('{"a": 1, "b": 2, "c": [1,2,3]}'::json, 'c', '1');
  json_extract_path 
 -------------------
@@ -299,7 +299,7 @@ SELECT json_extract_path('{"a": 1, "b": 2, "c": [1,2,3]}'::json, 'c', '1');
 
 **json_extract_path_text**
 
-```language-sql
+```sql
 SELECT json_extract_path_text('{"a": 1, "b": 2, "c": [1,2,3]}'::json, 'c', '1');
  json_extract_path_text 
 ------------------------

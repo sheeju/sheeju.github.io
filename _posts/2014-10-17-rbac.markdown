@@ -14,7 +14,7 @@ Roles represent behavior or responsibility. But how do we know exactly what beha
 
 Lets take an example the role "project_manager" is allowed to view project reports. Here is the relevant code
 
-```language-perl
+```perl
 if($c->check_any_user_role(qw/project_manager/) {
     #show the project report button
 } else {
@@ -24,7 +24,7 @@ if($c->check_any_user_role(qw/project_manager/) {
 
 This is just a string check and there is nothing else software can do to extend this permission check since it is hard coded. Also lets say that we decide to show project report button to "department_manager". Then we will have to change the code to reflect as shown below
 
-```language-perl
+```perl
 if($c->check_any_user_role(qw/project_manager department_manager/) {
     #show the project report button
 } else {
@@ -47,7 +47,7 @@ Here is the Entity-Relationship Diagram (ERD) for a possible database implementa
 So we will need to come up with better permission model which takes the permission URL/Method as input and check against the user to return true/false.
 Here is the example code.
 
-```language-perl
+```perl
 if($c->user->permission('project_report') {
     #show the project report button                                                              
 } else {                                                                                          

@@ -8,7 +8,7 @@ In this part let us build some tests for Ember App
 
 Now start your server:
 
-```language-markup
+```bash
 cd ember
 ember server
 ```
@@ -27,7 +27,7 @@ Let's build out a landing page for our app. We will TDD this entire application 
 
 All of our files will be in <a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules">ES6 module</a> format. If you are unfamiliar with ES6 modules I suggest you go and read up.
 
-```language-javascript
+```javascript
 
 import startApp from 'emberspeakers/tests/helpers/start-app';
 
@@ -60,14 +60,13 @@ Let's make the test pass:
 
 In ember/app/templates/application.hbs
 	
-<pre class="language-markup">
-<code class="language-markup">
-&lt;h2 id="title">Welcome to Ember Speakers&lt;/h2>
+
+```bash
+<h2 id="title">Welcome to Ember Speakers</h2>
 {% raw %}
 {{ outlet }}
 {% endraw %}
-</code>
-</pre>
+```
 
 Check your test suite and it should be all green.
 

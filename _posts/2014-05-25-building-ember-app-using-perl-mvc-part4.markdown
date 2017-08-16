@@ -10,7 +10,7 @@ We will be using Pretender by Ember Core member Trek Glowacki. Pretender is a ni
 
 We first add Pretender to the bower.json in our project root:
 
-```language-javascript
+```javascript
 	"ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.1",
     "pretender": "trek/pretender#0.0.5"
   }
@@ -21,7 +21,7 @@ then run bower install
 
 Next we will need to tell Broccoli to compile these new dependencies:
 
-```language-javascript
+```javascript
 app.import({development:'vendor/route-recognizer/dist/route-recognizer.js'});
 app.import({development:'vendor/FakeXMLHttpRequest/fake_xml_http_request.js'});
 app.import({development:'vendor/pretender/pretender.js'});
@@ -33,7 +33,7 @@ Tell `JSHint` to ignore the Pretender constant. Open up `ember/tests/.jshintrc` 
 
 Finally we need ember-data to make requests namespaced under `api` to our server:
 
-```language-javascript
+```javascript
 // ember/app/adapters/application.js
 export default DS.ActiveModelAdapter.extend({
   namespace: 'api'
@@ -42,7 +42,7 @@ export default DS.ActiveModelAdapter.extend({
 
 We should be in a good place to write our tests.
 
-```language-javascript
+```javascript
 // ember/tests/integration/speakers-page-test.js
 import startApp from 'bostonember/tests/helpers/start-app';
 
@@ -133,7 +133,7 @@ Let's make each pass:
 
 ### 1st Test
 
-```language-javascript
+```javascript
 // ember/app/router.js
 Router.map(function() {
   this.route('about');
@@ -141,7 +141,7 @@ Router.map(function() {
 });
 ```
 
-```language-javascript
+```javascript
 // ember/app/templates/application.hbs
 {% raw %}
 {{link-to 'About' 'about'}}
@@ -149,8 +149,8 @@ Router.map(function() {
 {% endraw %}
 ```
 
-<pre class=" language-markup">
-<code class=" language-markup">
+<pre class=" markup">
+<code class=" markup">
 // ember/app/templates/speakers.hbs
 &lt;h3>Speakers&lt;/h3>
 {% raw %}
@@ -163,7 +163,7 @@ The first test should now be passing.
 
 ### 2nd Test
 
-```language-javascript
+```javascript
 // ember/app/router.js
 Router.map(function() {
   this.route('about');
@@ -173,14 +173,14 @@ Router.map(function() {
 });
 ```
 
-```language-javascript
+```javascript
 // ember/app/models/speaker.js
 export default DS.Model.extend({
   name: DS.attr('string')
 });
 ```
 
-```language-javascript
+```javascript
 // ember/app/routes/speakers/index.js
 export default Ember.Route.extend({
   model: function() {
@@ -189,7 +189,7 @@ export default Ember.Route.extend({
 });
 ```
 
-```language-markup
+```markup
 // ember/templates/speakers/index.hbs
 {% raw %}
 {{#each}}
@@ -202,8 +202,8 @@ The 2nd test should now be passing.
 
 ### 3rd and 4th Test
 
-<pre class=" language-markup">
-<code class=" language-markup">
+<pre class=" markup">
+<code class=" markup">
 // ember/templates/speakers/show.hbs
 {% raw %}
 &lt;h4>{{name}}&lt;/h4>
@@ -224,7 +224,7 @@ Models are modules which will have access to data. Speakers "model" can have fun
 ** all: sub routine which will list output all the Speakers
 ** retrieve: sub routine which will list a speaker given the "id" integer.
 
-```language-perl	
+```perl	
 package EmberSpeakers::Model::Speakers;
 
 use strict;
@@ -249,7 +249,7 @@ sub retrieve {
 ```
 * Create a Controller for REST Api
 
-```language-perl
+```perl
 	package EmberSpeakers::Controller::Api::Speakers;
 	use Moose;
 	use namespace::autoclean;
@@ -347,7 +347,7 @@ Test your Api and listall speakers
 
 Result:
 
-```language-javascript
+```javascript
 {"speakers":[{"id":1,"name":"Bugs Bunny"},{"id":2,"name":"Wile E. Coyote"},{"name":"Yosemite Sam","id":3}]}
 ```
 
@@ -355,13 +355,13 @@ Result:
 
 Result:
 
-```language-javascript
+```javascript
 {"data":{"id":1,"name":"Bugs Bunny"}}
 ```
 
 Start your Catalyst server with port 3000 and restart your ember server with the command 
 
-```language-javascript
+```javascript
 ember server --proxy http://localhost:3000
 ```
 

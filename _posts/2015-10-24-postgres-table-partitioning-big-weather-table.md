@@ -47,7 +47,7 @@ We can also have custom condition so that we can apply postgres string functions
 
 Here is EXPLAIN ANALYZE report why I considered left over type casting to integer.
 
-```language-sql
+```sql
 EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE left("Zip", 1) = '1';
                        QUERY PLAN
 ----------------------------------------------------------------------------
@@ -59,7 +59,7 @@ EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE left("Zip", 1) = '1';
  Execution time: 0.026 ms
 ```
 
-```language-sql
+```sql
 EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE "Zip"::int > 1 AND 
 	"Zip"::int < 20000;
                        QUERY PLAN
@@ -76,7 +76,7 @@ EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE "Zip"::int > 1 AND
 
 ## Create parent Table
 
-```language-sql
+```sql
 DROP TABLE IF EXISTS "Weather" CASCADE;
 CREATE TABLE "Weather" (
 
@@ -98,7 +98,7 @@ CREATE TABLE "Weather" (
 
 ## Create Child table for Zip starting with 0, 1 and 2
 
-```language-sql
+```sql
 CREATE TABLE "Weather_Z0" (
 CHECK (  left("Zip", 1) = '0' )
 ) INHERITS ("Weather");
@@ -114,7 +114,7 @@ CHECK (  left("Zip", 1) = '2' )
 
 ## Create trigger Functions
 
-```language-sql
+```sql
 CREATE OR REPLACE FUNCTION "WeatherTriggerFunc"()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -135,14 +135,14 @@ LANGUAGE plpgsql;
 
 ## Create trigger on parent Table
 
-```language-sql
+```sql
 CREATE TRIGGER "WeatherTrigger"
     BEFORE INSERT ON "Weather"
     FOR EACH ROW EXECUTE PROCEDURE "WeatherTriggerFunc"();
 ```
 
 ## Create Index on child tables
-```language-sql
+```sql
 CREATE INDEX "Weather_Z0_Index" ON "Weather_Z0"("Zip");
 
 CREATE INDEX "Weather_Z1_Index" ON "Weather_Z1"("Zip");
@@ -154,7 +154,7 @@ CREATE INDEX "Weather_Z2_Index" ON "Weather_Z2"("Zip");
 
 Constraint exclusion works with only range or equality check constraints. It might not work for constraints like the following
 
-```language-sql
+```sql
 CREATE TABLE "Weather_Z0" (
 CHECK (  left("Zip", 1) = '0' )
 ) INHERITS ("Weather");
@@ -164,7 +164,7 @@ It is very important the WHERE clause is similar to CHECK condition other wise c
 
 This query will not make use of constrain_exclusion feature since the WHERE clause is not same as CHECK condition.
 
-```language-sql
+```sql
 EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE "Zip" = '10002';
                                   QUERY PLAN
 --------------------------------------------------------------------------
@@ -191,7 +191,7 @@ EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE "Zip" = '10002';
 
 If we change the above query slightly to make sure the WHERE clause and CHECK condition is in sync we will get better performance by making use of constraint_exclusion feature.
 
-```language-sql
+```sql
 EXPLAIN ANALYZE SELECT * FROM "Weather" WHERE left("Zip", 1) = left('10002', 1) 
 											  AND "Zip" = '10002';
                                   QUERY PLAN

@@ -30,7 +30,7 @@ I got impressed by EmberJS because of its Rich templating system with composed v
 
 The Router DSL is a map of your app
 
-```language-javascript
+```javascript
 App.Router.map(function() {
 	this.resource('post', path: {'posts/:post_id'}, function () {
 		this.route('comments');

@@ -33,7 +33,7 @@ Some interesting features are
 * Comment entire block, not single lines
 * Comments are not subtitles
 
-```language-perl
+```perl
 # Loop through all bananas in the bunch
 foreach my $banana (@bunch) {
 	my $monkey = Monkey->new(); # Call Monkey 
@@ -43,7 +43,7 @@ foreach my $banana (@bunch) {
 
 * Comments are not source control 
 
-```language-perl
+```perl
 #
 # 2014-11-10 - Added File (Alex)
 # 2014-11-10 - Modified 1 (Sally)
@@ -56,19 +56,19 @@ foreach my $banana (@bunch) {
 
 Below is example snippet of perl code which describes the comment on the same line of code which is difficult to link or relate when the comment is lengthy,
 
-```language-perl
+```perl
 $country_code = $self->get_country_code($ENV{'REMOTE_ADDR'}); # get the country code
 ```
 instead use below commenting style where comment is above the code.
 
-```language-perl
+```perl
 # get the country code
 $country_code = $self->get_country_code($ENV{'REMOTE_ADDR'});
 ```
 
 ## Avoid Obvious Comments
 
-```language-perl
+```perl
 # get the country code
 $country_code = $self->get_country_code($ENV{'REMOTE_ADDR'});
  
@@ -84,7 +84,7 @@ When the text is that obvious, it's really not productive to repeat it within co
 
 If you must comment on that code, you can simply combine it to a single line instead:
 
-```language-perl
+```perl
 # display state selection 
 $country_code = $self->get_country_code($ENV{'REMOTE_ADDR'});
 if ($country_code == 'US') {
@@ -102,7 +102,7 @@ if ($country_code == 'US') {
 `print_report({Colored => 1, Monthly => 0})`
 * Name hashes for their values, not their keys.
 
-```language-perl
+```perl
    # GOOD:
    %color = ('apple' => 'red', 'banana' => 'yellow');
    print $color{'apple'};          # Prints `red'
@@ -114,7 +114,7 @@ if ($country_code == 'US') {
 
 * Use _ (underscore) for private or internal Methods
 
-```language-perl
+```perl
 sub _internal {
 
 }
@@ -134,7 +134,7 @@ Comment block exists at the beginning of the source file containing Filename - D
 
 Here is the example format:
 
-```language-perl
+```perl
 # ========================================================================== #
 # lib/PAMS/Common/DBI.pm - DBI Common Connector 
 # Copyright (C) 2015 Exceleron Software, LLC                                 
@@ -143,7 +143,7 @@ Here is the example format:
 
 End of the file ensure the LICENCE in pod style is also same
 
-```language-perl
+```perl
 =head1 LICENSE
    
 Copyright (C) 2015 Exceleron Software, LLC.
@@ -155,7 +155,7 @@ Copyright (C) 2015 Exceleron Software, LLC.
 
 Each Method should have POD style document describing Parameters passed, return information and Description about the function 
  
-```language-perl
+```perl
 =item C<get_conn>
 
 Params : NONE
@@ -173,7 +173,7 @@ Include some short working examples in each Package. These examples should repre
 
 ### Start of Package 
 
-```language-perl
+```perl
 =head1 NAME
    
 PAMS::Common::DBI - This module will have all the generic functions of DBI 
@@ -206,7 +206,7 @@ Methods with small pod styled documentation will go here as explained above
 
 ### End of Packages
 
-```language-perl
+```perl
 =back
    
 =head1 LICENSE
@@ -265,7 +265,7 @@ When working with large projects like MDM, using procedural tests for object ori
 
 First, create a required module in your preffered namespace. Let's say for example we need to create DBI class with PAMS::Common namespace.
 
-```language-perl
+```perl
 package PAMS::Common::DBI
 
 use Moose;
@@ -277,7 +277,7 @@ use Moose;
 
 As a standard at Exceleron all the Test::Class modules will be placed in t/tests/ directory and all test class will start with Test:: so that we don't have namespace collision.
 
-```language-perl
+```perl
 package Test::PAMS::Common::DBI;
 
 use Test::Most;
@@ -292,7 +292,7 @@ sub class { 'PAMS::Common::DBI' }
 
 Here is sample directory structure
 
-```language-bash
+```bash
 lib/PAMS/Common/
 lib/PAMS/Common/DBI.pm
 t/
@@ -306,7 +306,7 @@ t/run.pl
 
 t/run.pl is the main testing script which invokes all the Test::Class Unit tests
 
-```language-perl
+```perl
 use FindBin;
 use lib 't/tests';
 use lib "$FindBin::Bin/../lib";

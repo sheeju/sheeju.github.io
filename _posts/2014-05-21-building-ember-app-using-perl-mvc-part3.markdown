@@ -13,7 +13,7 @@ For this part we will work with faked out data. In the next part we will provide
 
 Our first navigation test will be an easy one, create `ember/tests/integration/about-page-test.js`
 
-```language-javascript
+```javascript
 import startApp from 'emberspeakers/tests/helpers/start-app';
 
 var App;
@@ -41,7 +41,7 @@ To make this green we need to add an About route, a link from the landing page t
 
 ### Route
 
-```language-javascript
+```javascript
 // ember/app/router.js
 Router.map(function() {
   this.route('about');
@@ -50,8 +50,8 @@ Router.map(function() {
 
 ### Link in Landing page Template
 
-<pre class="language-markup">
-<code class="language-markup">
+<pre class="markup">
+<code class="markup">
 // ember/app/templates/application.hbs
 &lt;h2 id="title">Welcome to Boston Ember&lt;/h2>
 {% raw %}
@@ -64,8 +64,8 @@ Router.map(function() {
 
 ### Tempalte for about page
 
-<pre class=" language-markup">
-<code class=" language-markup">
+<pre class=" markup">
+<code class=" markup">
 // ember/app/templates/about.hbs
 &lt;h3>About&lt;/h3>
 
@@ -76,7 +76,7 @@ to do awesome Ember related things!&lt;/p>
 
 Your test should now be green. If you navigate to the root path in your browser you should be able to click through the app. What about getting back to root? We can add a test to for this navigation as well.
 
-```language-javascript
+```javascript
 // ember/tests/integration/landing-page-test.js
 test('Should allow navigating back to root from another page', function() {
   visit('/about').then(function() {
@@ -86,7 +86,7 @@ test('Should allow navigating back to root from another page', function() {
   });
 });
 ```
-```language-markup
+```markup
 // ember/templates/application.hbs
 {% raw %}
 {{link-to 'Home' 'application'}}
@@ -95,7 +95,7 @@ test('Should allow navigating back to root from another page', function() {
 ```
 
 <pre data-start="1" class="line-numbers">
-  <code class="language-markup">
+  <code class="markup">
 // ember/templates/application.hbs
 {% raw %}
 {{link-to 'Home' 'application'}}

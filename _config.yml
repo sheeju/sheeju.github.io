@@ -6,9 +6,12 @@ author: "Sheeju Alex"
 url: "http://sheeju.github.io"
 baseurl: ""
 
-markdown: rdiscount
+markdown: kramdown 
 permalink: :year/:month/:title.html
-pygments: true
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Google Analytics
 ga_domain: auto

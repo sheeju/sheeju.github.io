@@ -19,19 +19,19 @@ For setting up PERL and catalyst you can refer <a href="http://catalystframework
 
 Next we will install ember-cli
 
-```language-markup
+```bash
   	npm install -g ember-cli
 ```
 
 Confirm that you have ember-cli installed:
 
-```language-markup
+```bash
 	ember --version
 ```
 
 You should see:
 
-```language-markup
+```bash
 version: 0.0.27
 ```
 
@@ -43,14 +43,14 @@ For this project we will keep our catalyst and ember front-end in seperate direc
 
 ### Create a new top-level directory
 
-```language-markup
+```bash
 mkdir emberspeakers
 cd emberspeakers
 ```
 
 ### Now create catalyst project
 
-```language-markup
+```bash
 catalyst.pl EmberSpeakers
 perl script/emberspeakers_create.pl View JSON JSON
 mv EmberSpeakers catalyst
@@ -60,7 +60,7 @@ First create catalyst project named "emberspeakers" and create a View with JSON 
 
 Let's confirm that our catalyst server runs
 
-```language-markup
+```bash
 perl script/emberspeakers_server.pl
 ```
 
@@ -69,14 +69,14 @@ In your browser visit http://localhost:3000 and you should see
 
 ### Now the ember project
 
-```language-markup
+```bash
 ember new emberspeakers
 mv emberspeakers ember
 ```
 
 Now you should have a structure like this
 
-```language-markup
+```bash
 emberspeakers
 |- ember
 |- catalyst
@@ -84,7 +84,7 @@ emberspeakers
 
 Let's confirm that our ember app runs:
 
-```language-markup
+```bash
 cd ember
 ember server
 ```
@@ -93,7 +93,7 @@ In your browser visit http://localhost:4200 and you should see "Welcome to Ember
 
 At this point you can put everything in your top level directory under version control:
 	
-```language-markup
+```bash
 git init
 git add .
 gc -m "Initial commit"

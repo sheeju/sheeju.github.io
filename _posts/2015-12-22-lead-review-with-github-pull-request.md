@@ -20,13 +20,13 @@ As a Review process, it is important to test the code locally so that we avoid u
 
 5. Fetch the reference to the pull request based on its ID number, creating a new branch in the process.
 
-	```language-bash
+	```bash
 	git fetch upstream pull/<ID>/head:BRANCHNAME
 	```
 
 6. Switch to the new branch that's based on this pull request:
 
-	```language-bash
+	```bash
 	[master] $ git checkout BRANCHNAME
 	Switched to a new branch 'BRANCHNAME'
 	```
