@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JPList Perl Module and Server side JPList UI Example"
+title:  "JPList Perl Module and Server side JPList UI Demo"
 date:   2017-09-12 17:57:51
 ---
 
