@@ -30,7 +30,7 @@ Any issues please report [here](https://github.com/sheeju/JPList/issues)
 
 ## Integration with CGI
 
-```
+```perl
 use CGI::Request;
 use JPList;
 
@@ -55,7 +55,7 @@ $jp_resultset->{count};
 
 Add this below code in Catalyst Controller
 
-```
+```perl
 use JPList;
 
 my $jplist = JPList->new
@@ -77,7 +77,7 @@ $jp_resultset->{count};
 
 Add this below code in Dancer Controller
 
-```
+```perl
 use JPList;
 
 my $jplist = JPList->new
