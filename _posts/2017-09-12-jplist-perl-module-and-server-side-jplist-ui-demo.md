@@ -14,13 +14,13 @@ Server side rendering for JPLIst depends on the module used for parsing the JPLi
 
 Below URL shows example of using PHP/ASP as server side backend for rendering server side data.
 
-https://jplist.com/datasourcesexamples/index
+[https://jplist.com/datasourcesexamples/index](https://jplist.com/datasourcesexamples/index)
 
-## JPList Data Source for Catalyst/Perl
+## Data Source Examples for Perl/Catalyst MVC
 
 Below URL shows example of using Catalyst/Perl as server side backend for rendering server side data.
 
-https://jplistdemo-catalyst-perl.herokuapp.com/datasources
+[https://jplistdemo-catalyst-perl.herokuapp.com/datasources](https://jplistdemo-catalyst-perl.herokuapp.com/datasources)
 
 # JPList Module
 
@@ -101,8 +101,9 @@ $jp_resultset->{count};
 
 [https://github.com/sheeju/JPList](https://github.com/sheeju/JPList)
 
-http://jplist.com
+[http://jplist.com](http://jplist.com)
 
-https://jplist.com/datasourcesexamples/index
+[Datasources examples available on www.jplist.com](https://jplist.com/datasourcesexamples/index)
 
-https://jplistdemo-catalyst-perl.herokuapp.com/datasources
+[Perl Datasources examples deployed on www.heruko.com](https://jplistdemo-catalyst-perl.herokuapp.com/datasources)
+
