@@ -8,17 +8,21 @@ I was a Linux user and one of my favourite tool on linux is [ZIM](http://zim-wik
 
 After moving to MAC recently I was researching a way to install ZIM and running it as a desktop application.
 
-1. Install homebrew
+## 1. Install homebrew
 
-`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
-2. Install Packages required for zim via homebrew
+## 2. Install Packages required for zim via homebrew
 
-`brew install gtk-mac-integration gtkspell3 wget`
+```bash
+brew install gtk-mac-integration gtkspell3 wget
 
-`brew install pkg-config gtk+ python pygtk pygobject pygtksourceview graphviz`
+brew install pkg-config gtk+ python pygtk pygobject pygtksourceview graphviz`
+```
 
-3. Install ZIM
+## 3. Install ZIM
 
 ```
 cd ~/bin
@@ -27,7 +31,7 @@ tar xvfz zim-0.67.tar.gz
 rm -fr zim-0.67.tar.gz
 ```
 
-4. Create an MAC Application
+## 4. Create an MAC Application
 
 * Open Script Editor
 * Open new script editor
@@ -48,7 +52,7 @@ File->Export
 File Format: Application
 ```
 
-5. Change the Application icon with Zim icon
+## 5. Change the Application icon with Zim icon
 
 * Right-click the application for which you want to swap the icon, and select ‘Get Info’
 * In the top left corner of the Info panel, you’ll see the app’s icon. From here, drag the new icon file over the original. Drop it when you see the green + bubble on your cursor.
