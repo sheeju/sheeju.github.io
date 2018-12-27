@@ -11,14 +11,14 @@ Daemontools is the best way to manage your processes that is required to be runn
 http://cr.yp.to/daemontools/faq/create.html#why
 
 
-|    | **inittab** | **ttys** | **init.d** | **rc.local** | **/service** |
-|  ------ | ------ | ------ | ------ | ------ | ------ |
-|  Easy service installation and removal    | No |No |Yes |No |Yes |
-|  Easy first-time service startup          | No |No |No |No |Yes |
-|  Reliable restarts                        | Yes |Yes |No |No |Yes |
-|  Easy, reliable signalling                | No |No |No |No |Yes |
-|  Clean process state                      | Yes |Yes |No |No |Yes |
-|  Portability                              | No |No |No |No |Yes |
+|                 | **inittab** | **ttys** | **init.d** | **rc.local** | **/service** |
+|  ------                                   | ------ | ------ | ------ | ------ | ------ |
+|  Easy service installation and removal    | No  |No   |Yes  |No |Yes |
+|  Easy first-time service startup          | No  |No   |No   |No |Yes |
+|  Reliable restarts                        | Yes |Yes  |No   |No |Yes |
+|  Easy, reliable signalling                | No  |No   |No   |No |Yes |
+|  Clean process state                      | Yes |Yes  |No   |No |Yes |
+|  Portability                              | No  |No   |No   |No |Yes |
 
 # Installing daemontools
 
